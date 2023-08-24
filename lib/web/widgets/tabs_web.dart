@@ -51,10 +51,3 @@ class _TabsWebState extends State<TabsWeb> {
     );
   }
 }
-
-/*
-Text(
-      widget.title,
-      style: GoogleFonts.oswald(color: Colors.white, fontSize: 23.0),
-    );
- */
