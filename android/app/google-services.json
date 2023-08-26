@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "1005022992517",
+    "project_id": "portfolyo-30f15",
+    "storage_bucket": "portfolyo-30f15.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1005022992517:android:c2008874302733a2b7f1ec",
+        "android_client_info": {
+          "package_name": "com.example.personalportfolio"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1005022992517-tablvdlj3jskt3cpb5e4hr5qg882tvnh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxsijeyHvx_vDtkBvsXCxg8VOkZtx6eUs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1005022992517-tablvdlj3jskt3cpb5e4hr5qg882tvnh.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1005022992517-pl2r95vglkvn4oia6j0vb1b0uj5ln0u5.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.personalportfolio"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

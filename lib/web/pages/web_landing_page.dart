@@ -1,6 +1,10 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:personalportfolio/web/widgets/widgets.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class WebLandingPage extends StatefulWidget {
   const WebLandingPage({super.key});
@@ -16,7 +20,7 @@ class _WebLandingPageState extends State<WebLandingPage> {
     var wDevice = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Colors.white,
-      drawer: const Drawer(),
+      drawer: const AppDrawer(),
       appBar: _pageHeader(),
       body: _pageBody(hDevice: hDevice, wDevice: wDevice),
     );
@@ -117,25 +121,31 @@ class _WebLandingPageState extends State<WebLandingPage> {
         ),
         //Third Section
         SizedBox(
-          height: hDevice / 1.3,
-          child: Column(
+          height: hDevice / 2,
+          child: const Column(
             children: [
-              const Sans(
-                  text: "What I Do?", size: 40, fontWeight: FontWeight.bold),
-              const SizedBox(
-                height: 15,
+              Sans(text: "What I Do?", size: 40, fontWeight: FontWeight.bold),
+              SizedBox(
+                height: 30,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  widCard(
+                  AnimatedCardWeb(
+                      fit: BoxFit.contain,
+                      reverse: true,
                       imagePath: "assets/app.png",
-                      title: "Mobile App Development"),
-                  widCard(
-                      imagePath: "assets/webL.png", title: "Team Consultant"),
-                  widCard(
+                      text: "Mobile App Development"),
+                  AnimatedCardWeb(
+                      fit: BoxFit.contain,
+                      reverse: false,
+                      imagePath: "assets/webL.png",
+                      text: "Team Consultant"),
+                  AnimatedCardWeb(
+                      fit: BoxFit.contain,
+                      reverse: true,
                       imagePath: "assets/firebase.png",
-                      title: "Back-end development")
+                      text: "Back-end development")
                 ],
               )
             ],
@@ -143,7 +153,7 @@ class _WebLandingPageState extends State<WebLandingPage> {
         ),
         //Forth Section
         SizedBox(
-          height: hDevice,
+          height: hDevice / 1.5,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -192,7 +202,7 @@ class _WebLandingPageState extends State<WebLandingPage> {
                   header: "Message",
                   hint: "Enter your message",
                   lineCount: 10,
-                  width: wDevice / 1.5),
+                  width: wDevice / 1.44),
               MyElevatedButton(
                 height: 75,
                 width: 200,
@@ -379,6 +389,88 @@ class _WebLandingPageState extends State<WebLandingPage> {
         ),
         SizedBox(),
       ],
+    );
+  }
+}
+
+class AppDrawer extends StatelessWidget {
+  const AppDrawer({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      backgroundColor: Colors.white,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          CircleAvatar(
+            radius: 78,
+            backgroundColor: Colors.blue[900],
+            child: CircleAvatar(
+              radius: 75,
+              backgroundColor: Colors.black,
+              child: CircleAvatar(
+                radius: 72,
+                backgroundColor: Colors.red[900],
+                child: const CircleAvatar(
+                  radius: 70,
+                  backgroundColor: Colors.white,
+                  backgroundImage: AssetImage("assets/ben.jpeg"),
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(
+            height: 15,
+          ),
+          const Sans(
+              text: "İsmail Tunç Kankılıç",
+              size: 30.0,
+              fontWeight: FontWeight.bold),
+          const SizedBox(
+            height: 15,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              urlLauncher(
+                  imagePath: "assets/instagram.svg",
+                  url: "https://www.instagram.com/flutteradam/"),
+              urlLauncher(
+                  imagePath: "assets/github.svg",
+                  url: "https://github.com/ttoghere"),
+              urlLauncher(
+                  imagePath: "assets/linkedin.svg",
+                  url:
+                      "https://www.linkedin.com/in/ismail-tun%C3%A7-kank%C4%B1l%C4%B1%C3%A7-3a2654235/")
+            ],
+          )
+        ],
+      ),
+    );
+  }
+
+//"https://www.instagram.com/flutteradam/"
+//  "assets/instagram.svg"
+  IconButton urlLauncher({required String imagePath, required String url}) {
+    return IconButton(
+      onPressed: () async {
+        final uri = Uri.parse(url);
+        log("Url1");
+        if (await canLaunchUrl(uri)) {
+          launchUrl(uri);
+        } else {
+          null;
+        }
+        log("Url2");
+      },
+      icon: SvgPicture.asset(
+        imagePath,
+        width: 35,
+        height: 35,
+      ),
     );
   }
 }

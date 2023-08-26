@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MobileLandingPage extends StatefulWidget {
+  static const routeName = "/";
   const MobileLandingPage({super.key});
 
   @override
