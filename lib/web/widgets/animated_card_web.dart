@@ -1,4 +1,6 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+
 import 'package:personalportfolio/web/widgets/widgets.dart';
 
 class AnimatedCardWeb extends StatefulWidget {
@@ -6,12 +8,16 @@ class AnimatedCardWeb extends StatefulWidget {
   final String text;
   final BoxFit fit;
   final bool reverse;
+  final double height;
+  final double width;
   const AnimatedCardWeb({
     Key? key,
     required this.imagePath,
     required this.text,
     required this.fit,
     required this.reverse,
+    required this.height,
+    required this.width,
   }) : super(key: key);
 
   @override
@@ -61,8 +67,8 @@ class _AnimatedCardWebState extends State<AnimatedCardWeb>
             children: [
               Image.asset(
                 widget.imagePath,
-                height: 200,
-                width: 200,
+                height: widget.height,
+                width: widget.width,
                 fit: widget.fit,
               ),
               const SizedBox(

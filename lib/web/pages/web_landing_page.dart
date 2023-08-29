@@ -121,7 +121,7 @@ class _WebLandingPageState extends State<WebLandingPage> {
         ),
         //Third Section
         SizedBox(
-          height: hDevice / 2,
+          height: hDevice / 1.6,
           child: const Column(
             children: [
               Sans(text: "What I Do?", size: 40, fontWeight: FontWeight.bold),
@@ -132,18 +132,24 @@ class _WebLandingPageState extends State<WebLandingPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   AnimatedCardWeb(
+                      height: 200,
+                      width: 200,
                       fit: BoxFit.contain,
                       reverse: true,
                       imagePath: "assets/app.png",
                       text: "Mobile App Development"),
                   AnimatedCardWeb(
                       fit: BoxFit.contain,
+                      height: 200,
+                      width: 200,
                       reverse: false,
                       imagePath: "assets/webL.png",
-                      text: "Team Consultant"),
+                      text: "Web Development"),
                   AnimatedCardWeb(
                       fit: BoxFit.contain,
                       reverse: true,
+                      height: 200,
+                      width: 200,
                       imagePath: "assets/firebase.png",
                       text: "Back-end development")
                 ],
@@ -153,7 +159,7 @@ class _WebLandingPageState extends State<WebLandingPage> {
         ),
         //Forth Section
         SizedBox(
-          height: hDevice / 1.5,
+          height: hDevice / 1.2,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -202,7 +208,7 @@ class _WebLandingPageState extends State<WebLandingPage> {
                   header: "Message",
                   hint: "Enter your message",
                   lineCount: 10,
-                  width: wDevice / 1.44),
+                  width: wDevice / 1.515),
               MyElevatedButton(
                 height: 75,
                 width: 200,
@@ -374,18 +380,23 @@ class _WebLandingPageState extends State<WebLandingPage> {
       children: [
         TabsWeb(
           title: "Hello",
+          route: "/",
         ),
         TabsWeb(
           title: "Blog",
+          route: "/blog",
         ),
         TabsWeb(
           title: "About",
+          route: "/about",
         ),
         TabsWeb(
           title: "Contact",
+          route: "/contact",
         ),
         TabsWeb(
           title: "Works",
+          route: "/works",
         ),
         SizedBox(),
       ],
@@ -452,8 +463,6 @@ class AppDrawer extends StatelessWidget {
     );
   }
 
-//"https://www.instagram.com/flutteradam/"
-//  "assets/instagram.svg"
   IconButton urlLauncher({required String imagePath, required String url}) {
     return IconButton(
       onPressed: () async {

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:personalportfolio/mobile/mobile_about_page.dart';
+import 'package:personalportfolio/mobile/mobile_contact_page.dart';
 import 'package:personalportfolio/mobile/mobile_landing_page.dart';
 import 'package:personalportfolio/web/pages/web_about_page.dart';
+import 'package:personalportfolio/web/pages/web_contact_page.dart';
 import 'package:personalportfolio/web/pages/web_landing_page.dart';
 
 class RouteGenerator {
@@ -38,6 +40,18 @@ class RouteGenerator {
             },
           ),
         );
+      case "/contact":
+        return MaterialPageRoute(
+            settings: settings,
+            builder: (_) {
+              return LayoutBuilder(builder: (context, constraints) {
+                if (constraints.maxWidth > 800) {
+                  return WebContact();
+                } else {
+                  return MobileContact();
+                }
+              });
+            });
       default:
         return _errorRoute();
     }
